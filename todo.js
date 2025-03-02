@@ -34,7 +34,12 @@ const renderButton = (li) => {
 const handleToDoDelete = (event) => {
     const li = event.target.parentElement;
     li.remove();
-    ToDos = ToDos.filter((toDo) => toDo.id !== parseInt(li.id));
+
+    const targetIndex = ToDos.findIndex((toDo) => toDo.id === parseInt(li.id));
+    if (targetIndex !== -1) {
+        ToDos.splice(targetIndex, 1);
+    }
+
     saveToDos();
 }
 
