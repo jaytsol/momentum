@@ -2,6 +2,15 @@ const todoForm = document.querySelector("#todo-form");
 const todoInput = todoForm.querySelector("input");
 const toDoList = document.querySelector("#todo-list");
 
+const TODOS_KEY = "todos";
+
+const ToDos = [];
+console.log(ToDos);
+
+const saveToDos = () => {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(ToDos));
+}
+
 const renderToDo = (newToDo) => {
     const li = document.createElement("li");
     renderSpan(newToDo, li);
@@ -31,7 +40,9 @@ const handleToDoSubmit = (event) => {
     event.preventDefault();
     const newToDo = todoInput.value;
     todoInput.value = "";
+    ToDos.push(newToDo);
     renderToDo(newToDo);
+    saveToDos();
 }
 
 todoForm.addEventListener("submit", handleToDoSubmit);
