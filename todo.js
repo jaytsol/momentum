@@ -10,16 +10,17 @@ const saveToDos = () => {
     localStorage.setItem(TODOS_KEY, JSON.stringify(ToDos));
 }
 
-const renderToDo = (newToDo) => {
+const renderToDo = (newToDoObj) => {
     const li = document.createElement("li");
-    renderSpan(newToDo, li);
+    li.id = newToDoObj.id;
+    renderSpan(newToDoObj, li);
     renderButton(li);
     toDoList.appendChild(li);
 }
 
-const renderSpan = (newToDo, li) => {
+const renderSpan = (newToDoObj, li) => {
     const span = document.createElement("span");
-    span.innerText = newToDo;
+    span.innerText = newToDoObj.text;
     li.appendChild(span);
 }
 
@@ -33,14 +34,20 @@ const renderButton = (li) => {
 const handleToDoDelete = (event) => {
     const li = event.target.parentElement;
     li.remove();
+    ToDos = ToDos.filter((toDo) => toDo.id !== parseInt(li.id));
+    saveToDos();
 }
 
 const handleToDoSubmit = (event) => {
     event.preventDefault();
     const newToDo = todoInput.value;
     todoInput.value = "";
-    ToDos.push(newToDo);
-    renderToDo(newToDo);
+    const newToDoObj = {
+        text: newToDo,
+        id: Date.now(),
+    }
+    ToDos.push(newToDoObj);
+    renderToDo(newToDoObj);
     saveToDos();
 }
 
