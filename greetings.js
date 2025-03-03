@@ -12,6 +12,8 @@ function onLoginSubmit(event) {
     loginForm.classList.add(HIDDEN_CLASSNAME);
     localStorage.setItem(USERNAME_KEY, username);
     paintGreetings(username);
+    todoForm.classList.remove(HIDDEN_CLASSNAME);
+    toDoList.classList.remove(HIDDEN_CLASSNAME);
 }
 
 loginForm.addEventListener("submit", onLoginSubmit);

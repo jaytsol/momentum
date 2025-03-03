@@ -4,6 +4,11 @@ const toDoList = document.querySelector("#todo-list");
 
 const TODOS_KEY = "todos";
 
+if (localStorage.getItem(USERNAME_KEY) === null) {
+    todoForm.classList.add(HIDDEN_CLASSNAME);
+    toDoList.classList.add(HIDDEN_CLASSNAME);
+}
+
 let ToDos = localStorage.getItem(TODOS_KEY) ? JSON.parse(localStorage.getItem(TODOS_KEY)) : [];
 
 const saveToDos = () => {
