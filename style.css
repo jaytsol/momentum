@@ -11,21 +11,26 @@ img {
     z-index: -1;
     animation: fadeIn 0.5s linear;
     opacity: 0.8;
+    filter: brightness(0.8);
 }
 
 #clock {
     color: white;
-    font-size: 80px;
-    font-weight: 600;
+    font-size: 90px;
+    font-weight: 700;
     text-align: center;
-    margin-top: 80px;
+    letter-spacing: 2px;
+    margin-top: 100px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    animation: float 5s ease-in-out infinite;
 }
 
 #login-form {
     color: white;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
     text-align: center;
+    margin: 30px auto;
 }
 
 #login-form input {
@@ -33,13 +38,38 @@ img {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
+    padding: 10px 20px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 25px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#login-form input:focus {
+    border-color: rgba(255,255,255,0.6);
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
 }
 
 #greeting {
     color: white;
-    font-size: 50px;
-    font-weight: 600;
+    font-size: 55px;
+    font-weight: 700;
     text-align: center;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+    animation: greetingFade 1.5s ease-out forwards;
+}
+
+@keyframes greetingFade {
+    0%, 66.67% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px);
+        display: none;
+    }
 }
 
 #weather {
@@ -47,6 +77,13 @@ img {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.1);
+    padding: 10px 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
 }
 
 #todo-form {
@@ -54,6 +91,43 @@ img {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
+    margin: 40px auto;
+    width: 80%;
+    max-width: 600px;
+    animation: todoAppear 2s ease-in forwards;
+}
+
+#todo-form input {
+    width: 100%;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: white;
+    font-size: 18px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+#todo-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#todo-form input:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 5px 25px rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+@keyframes todoAppear {
+    0%, 66.67% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 #todo-list {
@@ -61,28 +135,74 @@ img {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 0;
+    margin-bottom: 150px;
+    animation: todoAppear 2s ease-in forwards;
 }
 
 #todo-list li {
     list-style: none;
+    margin: 15px 0;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+#todo-list li:hover {
+    transform: translateX(5px);
+    background: rgba(255,255,255,0.2);
+}
+
+.todo-delete-btn {
+    border: none;
+    background: none;
+    color: #868e96;
+    font-size: 1.1rem;
+    padding: 5px;
+    opacity: 0.6;
+    transition: all 0.2s ease;
+}
+
+.todo-delete-btn:hover {
+    opacity: 1;
+    color: #ff6b6b;
 }
 
 #quote {
     color: white;
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 500;
     text-align: center;
     position: fixed;
-    bottom: 20px;
+    bottom: 30px;
     width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
 .shadow-text {
     text-shadow: 
-        1px 1px 0 #000,
-        -0.5px -0.5px 0 #000,
-        0.5px -0.5px 0 #000,
-        -0.5px 0.5px 0 #000,
-        0.5px 0.5px 0 #000;
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
     color: white;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
 }

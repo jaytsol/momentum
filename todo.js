@@ -26,7 +26,8 @@ const renderSpan = (newToDoObj, li) => {
 
 const renderButton = (li) => {
     const button = document.createElement("button");
-    button.innerText = "❌";
+    button.innerText = "🗑️";
+    button.classList.add("todo-delete-btn");
     button.addEventListener("click", handleToDoDelete);
     li.appendChild(button);
 }
